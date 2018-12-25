@@ -1,19 +1,16 @@
 import React from 'react';
-import {View, Text,Button, StyleSheet, ActivityIndicator, AsyncStorage} from 'react-native';
+import {View, Text, Button, StyleSheet, SafeAreaView, ActivityIndicator, AsyncStorage} from 'react-native';
+import {createMaterialTopTabNavigator, createStackNavigator, createAppContainer} from 'react-navigation';
+import SignInScreen from "./SignInScreen";
+import SignUpScreen from "./SignUpScreen";
+import HomeScreen from './HomeScreen';
 
-class LoginScreen extends React.Component{
+class LoginScreen extends React.Component {
 
-    login = async () => {
-        AsyncStorage.clear();
-        this.props.navigation.navigate('AuthLoading');
-    };
-
-    render(){
-        return(
+    render() {
+        return (
             <View style={styles.container}>
-                <Button title='login'
-                        onPress={this.login}
-                />
+                <Text>Test Login screen</Text>
             </View>
         )
     }
@@ -23,7 +20,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     }

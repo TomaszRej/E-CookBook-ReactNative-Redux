@@ -15,6 +15,7 @@ import AddScreen from "./screens/AddScreen";
 import FavoritesScreen from './screens/FavoritesScreen';
 import LogoutScreen from './screens/LogoutScreen';
 import LoginScreen from './screens/LoginScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const AppTabNavigator = createMaterialBottomTabNavigator({
@@ -26,7 +27,8 @@ const AppTabNavigator = createMaterialBottomTabNavigator({
         })
     },
     Add: {
-        screen: AddScreen,
+//zmienic na wartosc z redux
+        screen: false ? AddScreen : SettingsScreen,
         navigationOptions: {
             tabBarLabel: 'Add',
             tabBarIcon: (<Icon name='ios-add-circle' size={24}/>),
@@ -38,6 +40,15 @@ const AppTabNavigator = createMaterialBottomTabNavigator({
             tabBarLabel: 'Favorites',
             tabBarIcon: (<Icon name='ios-heart' size={24}/>),
         }
+    },
+    Settings: {
+        screen: SettingsScreen,
+        navigationOptions: {
+            tabBarLabel: 'Settings',
+            //zmienic na wartosc z redux user
+            tabBarIcon: (<Icon name={false ? 'md-person':'md-log-in'} size={24}/>),
+        }
+
     }
 }, {
     initialRouteName: 'Home',
@@ -74,16 +85,15 @@ const AppStackNavigator = createStackNavigator({
         })
     }
 });
-// podstawic za false wartosc z reduxa czy jest zalogowany
-const AppDrawerNavigator = false ? createDrawerNavigator({
+
+const AppDrawerNavigator = createDrawerNavigator({
     Home: AppStackNavigator,
-    Logout: LogoutScreen
-}) : createDrawerNavigator({
-    Home: AppStackNavigator,
-    Login: LoginScreen
+    Add: AddScreen,
+    Favorites: FavoritesScreen,
+    Settings: SettingsScreen
 });
 
-const SwitchNavigator = createSwitchNavigator({
+ const SwitchNavigator = createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,
     //Auth: AuthStackNavigator,
     App: AppDrawerNavigator

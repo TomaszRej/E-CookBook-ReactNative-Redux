@@ -6,10 +6,14 @@ class SignInScreen extends React.Component{
         //await AsyncStorage.setItem('userToken','Tomek');
         this.props.navigation.navigate('App');
     };
+    handleCancel = () => {
+        this.props.navigation.navigate('HomeScreen');
+    };
+
     render(){
         return(
             <View style={styles.container}>
-                <Button title='Complete Sign In'onPress={this.signIn}/>
+                <Button title='Cancel'onPress={this.handleCancel}/>
             </View>
         )
     }
