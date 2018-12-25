@@ -1,0 +1,87 @@
+{
+  "recipes": [
+    {
+      "author": "Tomek",
+      "title": "Ciasto na pierogi",
+      "description": "To najlepszy przepis, aby zrobić idealne ciasto na pierogi. Tego, jak zrobić ciasto na pierogi nauczyła mnie moja babcia. To do niej kiedyś dzwoniłam pytając o proporcje mąki, wody i sekret, który sprawiał, że jej ciasto na pierogi było najlepsze. ",
+      "timeToPrepare": "60",
+      "hotLvl": "Łagodny",
+      "isVegetarian": true,
+      "link": "https://via.placeholder.com/150",
+      "likes": 1,
+      "whoLikes": [
+        "Tomek"
+      ],
+      "ingredients": [
+        "mąka pszenna",
+        "sól",
+        "olej",
+        "woda"
+      ],
+      "instructions": [
+        "Mąkę łączę z solą, olejem i ciągle mieszając z mikserze z hakiem lub ręcznie na stolnicy dodaję po trochu bardzo gorąca wodę. Jeśli robicie ręcznie trzeba uważać, żeby się nie poparzyć! Wyrabiam gładkie, elastyczne ciasto łatwo dochodzące od ręki. Przykrywam ściereczką i pozostawiam na 10-15 minut, aby odpoczęło.",
+        "Wałkuję i nadziewam ulubionym farszem."
+      ],
+      "id": 1
+    },
+    {
+      "author": "Puchatek",
+      "title": "Jajecznica",
+      "description": "Dzisiaj zapraszam na przepis na jajecznicę idealną, czyli jajecznicę na maśle. Taką jajecznicę robiła moja babcia, delikatną, niezbyt ściętą. Pamiętam ją do dziś, gdy jadłam jajecznicę przy stole w salonie na obrusie z kwiatami, słońce wpadało do pokoju, obok grało radio i słychać było znajome „Lato z radiem”.",
+      "timeToPrepare": "10",
+      "hotLvl": "Łagodny",
+      "isVegetarian": true,
+      "link": "https://via.placeholder.com/150",
+      "likes": 0,
+      "whoLikes": [],
+      "ingredients": [
+        "masło",
+        "jajka",
+        "mleko"
+      ],
+      "instructions": [
+        "Na patelni rozpuścić łyżkę masła. Gdy stanie się płynne, wbić bezpośrednio trzy jajka. ",
+        "Delikatnie i bardzo wolno mieszam. Lekko solę. Gdy zaczną się ścinać dolewam 2-3 łyżki mleka lub śmietanki i smażę jeszcze przez chwilę.",
+        "Przekładam na talerz i jajecznica gotowa!"
+      ],
+      "id": 2
+    },
+    {
+      "author": "Puchatek",
+      "title": "Kotlet Schabowy",
+      "description": "Kotlet schabowy babci :)",
+      "timeToPrepare": "45",
+      "hotLvl": "Lekko Ostry",
+      "isVegetarian": "",
+      "link": "https://via.placeholder.com/150",
+      "likes": 0,
+      "whoLikes": [],
+      "ingredients": [
+        "schab bez kości",
+        "mleko",
+        "sól",
+        "pieprz"
+      ],
+      "instructions": [
+        "Ostrym nożem odciąć białą otoczkę z żyłki po zewnętrznej części mięsa. Pokroić na 4 plastry. Położyć na desce i dokładnie roztłuc na cieniutkie filety (mogą wyjść duże, wielkości pół talerza). Do rozbicia mięsa najlepiej użyć specjalnego tłuczka z metalowym obiciem z wytłoczoną krateczką.",
+        "Filety namoczyć w mleku z dodatkiem soli i pieprzu (ewentualnie z dodatkiem kilku plastrów cebuli) przez ok. 2 godziny lub dłużej jeśli mamy czas (można też zostawić do namoczenia na noc).",
+        "Wyjąć filety z mleka i osuszyć je papierowymi ręcznikami. Doprawić solą (niezbyt dużo, bo zalewa z mleka była już solona) i pieprzem, obtoczyć w mące, następnie w roztrzepanym jajku, a na koniec w bułce tartej."
+      ],
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Tomek",
+      "password": "Tomek",
+      "favorites": []
+    },
+    {
+      "id": 2,
+      "name": "Puchatek",
+      "password": "Puchatek",
+      "favorites": []
+    }
+  ]
+}
