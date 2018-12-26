@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, TextInput} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, TextInput, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
 
@@ -13,9 +13,21 @@ class HomeScreen extends React.Component {
 
     render() {
 
-        const recipes = this.props.recipes.map((recipe) => {
+        const recipes = this.props.recipes.map((recipe,index) => {
             return (
-                recipe.title
+                <View
+                    style={styles.recipe}
+                    key={index}>
+
+                    <Text>{recipe.title}</Text>
+                    <Image
+                        source={{uri: recipe.link}}
+                        style={styles.recipeImage}
+                    />
+                    <View>
+                        <Icon name='ios-leaf' size={30}/>
+                    </View>
+                </View>
             )
         });
         return (
@@ -32,11 +44,11 @@ class HomeScreen extends React.Component {
                             size={30}/>
                     </View>
                 </View>
-                <ScrollView>
-                    <View style={styles.recipe}>
-                        <Text>{recipes}</Text>
+                <ScrollView style={styles.recipes}>
 
-                    </View>
+                 {recipes}
+
+
 
 
                 </ScrollView>
@@ -80,8 +92,19 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
         // justifyContent: 'center'
     },
+    recipes: {
+        backgroundColor: 'pink',
+      width: '100%'
+    },
     recipe: {
-        height: 4000,
+       //height: 4000,
+        //height: '100%',
+        width: '100%',
         backgroundColor: 'yellow'
+    },
+    recipeImage:{
+      height: 300,
+      width: '100%'
     }
+
 });

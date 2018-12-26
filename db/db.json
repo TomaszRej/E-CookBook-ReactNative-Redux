@@ -1,3 +1,4 @@
+
 {
   "recipes": [
     {
@@ -7,7 +8,7 @@
       "timeToPrepare": "60",
       "hotLvl": "Łagodny",
       "isVegetarian": true,
-      "link": "https://via.placeholder.com/150",
+      "link":"https://via.placeholder.com/150",
       "likes": 1,
       "whoLikes": [
         "Tomek"
