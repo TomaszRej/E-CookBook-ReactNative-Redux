@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Image,TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultInput from '../components/UI/DefaultInput';
 import {connect} from 'react-redux';
@@ -14,14 +14,20 @@ class HomeScreen extends React.Component {
             searchText: ''
         };
     }
-    handlePressOnImage = () =>{
 
-     this.props.navigation.navigate('Details');
+    handlePressOnImage = (id) => {
+        this.props.navigation.navigate('Details', {
+            id: id
+        });
+    };
+    handleHeartClick = (id) => {
+        this.props.updateLikes(id);
     };
 
     render() {
-
-        const recipes = this.props.recipes.map((recipe, index) => {
+        console.log(this.props.recipes, 'thispropsrecipes');
+        const filteredRecipes = this.props.recipes.filter((el) => el.title.includes(this.state.searchText));
+        const recipes = filteredRecipes.map((recipe, index) => {
             return (
                 <View
                     style={styles.recipe}
@@ -29,7 +35,7 @@ class HomeScreen extends React.Component {
 
                     <Text
                         style={styles.title}>{recipe.title}</Text>
-                    <TouchableOpacity onPress={this.handlePressOnImage}>
+                    <TouchableOpacity onPress={() => this.handlePressOnImage(recipe.id)}>
                         <Image
                             source={{uri: recipe.link}}
                             style={styles.recipeImage}
@@ -37,20 +43,31 @@ class HomeScreen extends React.Component {
                     </TouchableOpacity>
                     <View style={styles.icons}>
                         <Icon name='ios-leaf' size={30}
-                              style={{color: recipe.isVegetarian ? 'green' : 'grey',paddingHorizontal: 5}}/>
+                              style={{color: recipe.isVegetarian ? 'green' : 'grey', paddingHorizontal: 5}}/>
                         <View style={styles.flames}>
-                            <Icon name='ios-flame' size={30}/>
                             <Icon name='ios-flame' size={30}
-                                  style={{paddingHorizontal: 5}}/>
-                            <Icon name='ios-flame' size={30}/>
+                                  style={{color: recipe.hotLvl !== 0 ? 'red' : 'gray'}}/>
+                            <Icon name='ios-flame' size={30}
+                                  style={{
+                                      paddingHorizontal: 5,
+                                      color: (recipe.hotLvl !== 0) && (recipe.hotLvl !== 1) ? 'red' : 'gray'
+                                  }}/>
+                            <Icon name='ios-flame' size={30}
+                                  style={{color: recipe.hotLvl === 3 ? 'red' : 'gray'}}
+                            />
+
+
                         </View>
                         <View style={styles.iconGroup}>
                             <Icon name='ios-timer' size={30}/>
                             <Text style={styles.textInIconGroup}>{recipe.timeToPrepare}</Text>
                         </View>
                         <View style={styles.iconGroup}>
-                            <Icon name='ios-heart' size={30}
-                                  style={{color: recipe.likes > 0 ? 'red' : 'grey'}}/>
+                            <TouchableOpacity onPress={() => this.handleHeartClick(recipe.id)}>
+                                <Icon name='ios-heart' size={30}
+                                      style={{color: recipe.likes > 0 ? 'red' : 'grey'}}/>
+                            </TouchableOpacity>
+
                             <Text style={styles.textInIconGroup}>{recipe.likes}</Text>
                         </View>
                     </View>
@@ -89,8 +106,14 @@ const mapStateToProps = state => {
     }
 };
 
+const mapDispatchToProps = dispatch => {
+    return{
+        updateLikes: (id) => dispatch({type: 'UPDATE_LIKES',id})
+    }
+};
 
-export default connect(mapStateToProps)(HomeScreen);
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomeScreen);
 
 const styles = StyleSheet.create({
     container: {
@@ -106,14 +129,14 @@ const styles = StyleSheet.create({
         height: 50
     },
     searchInput: {
-        width: '80%',
+        width: '60%',
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'center'
     },
     searchInputText: {
         marginRight: 5,
-        flex: 8
+        flex: 5
     },
     searchInputIcon: {
         flex: 1,
@@ -150,7 +173,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     textInIconGroup: {
-        paddingHorizontal: 3,
+        paddingHorizontal: 8,
         fontSize: 28,
         paddingBottom: 3
     },
