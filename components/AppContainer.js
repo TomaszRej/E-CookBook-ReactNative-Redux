@@ -15,12 +15,25 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 
 import SettingsScreen from '../screens/SettingsScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DetailsScreen from "../screens/DetailsScreen";
 
 
+const RecipesNavigator = createStackNavigator({
+   Home: {
+       screen:HomeScreen
+   },
+   Details: {
+       screen: DetailsScreen
+   }
+},{
+    defaultNavigationOptions:{
+        header: null
+    }
+});
 
 const AppTabNavigator = createMaterialBottomTabNavigator({
     Home: {
-        screen: HomeScreen,
+        screen: RecipesNavigator,
         navigationOptions: () => ({
             tabBarLabel: 'Home',
             tabBarIcon: <Icon name='ios-home' size={24} />,
@@ -89,7 +102,8 @@ const AppStackNavigator = createStackNavigator({
                 </TouchableOpacity>
             ),
         })
-    }
+    },
+
 });
 
 const AppDrawerNavigator = createDrawerNavigator({

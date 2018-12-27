@@ -6,7 +6,16 @@ const initialState = {
 };
 
 const reducer = (state=initialState, action) => {
-        return state;
+    switch(action.type){
+        case 'SET_CURRENT_USER_NAME':
+            return{
+                ...state,
+                userName: action.name
+            };
+        default:
+            return state;
+    }
+
 };
 
 export default reducer;
