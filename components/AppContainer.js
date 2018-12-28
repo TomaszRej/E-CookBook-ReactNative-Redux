@@ -16,17 +16,17 @@ import FavoritesScreen from '../screens/FavoritesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DetailsScreen from "../screens/DetailsScreen";
-
+import { connect } from 'react-redux';
 
 const RecipesNavigator = createStackNavigator({
-   Home: {
-       screen:HomeScreen
-   },
-   Details: {
-       screen: DetailsScreen
-   }
-},{
-    defaultNavigationOptions:{
+    Home: {
+        screen: HomeScreen
+    },
+    Details: {
+        screen: DetailsScreen
+    }
+}, {
+    defaultNavigationOptions: {
         header: null
     }
 });
@@ -36,12 +36,12 @@ const AppTabNavigator = createMaterialBottomTabNavigator({
         screen: RecipesNavigator,
         navigationOptions: () => ({
             tabBarLabel: 'Home',
-            tabBarIcon: <Icon name='ios-home' size={24} />,
+            tabBarIcon: <Icon name='ios-home' size={24}/>,
         })
     },
     Add: {
-//zmienic na wartosc z redux
-        screen: false ? AddScreen : SettingsScreen,
+
+        screen: AddScreen,
         navigationOptions: {
             tabBarLabel: 'Add',
             tabBarIcon: (<Icon name='ios-add-circle' size={24}/>),
@@ -58,21 +58,20 @@ const AppTabNavigator = createMaterialBottomTabNavigator({
         screen: SettingsScreen,
         navigationOptions: {
             tabBarLabel: 'Settings',
-            //zmienic na wartosc z redux user
-            tabBarIcon: (<Icon name={false ? 'md-person':'md-log-in'} size={24}/>),
+            tabBarIcon: (<Icon name='md-person' size={24}/>),
         }
 
     }
 }, {
-    navigationOptions: ({navigation}) =>{
+    navigationOptions: ({navigation}) => {
         const {routeName} = navigation.state.routes[navigation.state.index];
 
-        if(routeName === 'Home'){
-            return{
+        if (routeName === 'Home') {
+            return {
                 headerTitle: 'E-CookBook'
             }
-        }else{
-            return{
+        } else {
+            return {
                 headerTitle: routeName
             }
         }
@@ -81,7 +80,7 @@ const AppTabNavigator = createMaterialBottomTabNavigator({
     initialRouteName: 'Home',
     shifting: true,
     //labeled: false,
-    barStyle: { backgroundColor: 'white' },
+    barStyle: {backgroundColor: 'white'},
     tabBarOptions: {
         showIcon: true,
         showLabel: false,

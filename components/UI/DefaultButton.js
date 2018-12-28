@@ -45,11 +45,13 @@ const styles = StyleSheet.create({
     },
     disabled: {
         backgroundColor: '#eee',
-        color: '#aaa'
+        color: '#aaa',
+        borderColor: '#aaa'
 
     },
     disabledText: {
-        borderColor: '#aaa'
+        borderColor: '#aaa',
+        color: '#aaa'
     }
 });
 

@@ -1,8 +1,7 @@
 import db from '../../db/db.json';
 const initialState = {
     recipes: db.recipes,
-    selectedRecipe: {id: 7,
-    title: 'hejsk'}
+    selectedRecipe: {}
 };
 
 const reducer = (state=initialState, action) => {
@@ -19,6 +18,11 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 selectedRecipe: state.recipes.find((el)=>el.id === action.id)
 
+            };
+        case 'ADD_RECIPE':
+            return{
+                ...state,
+                recipes: state.recipes.concat(action.recipe)
             };
         case 'UPDATE_LIKES':
             console.log(state.recipes,'state REDUX');

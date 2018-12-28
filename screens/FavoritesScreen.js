@@ -14,7 +14,8 @@ class FavoritesScreen extends React.Component {
 }
 const mapStateToProps = state => {
   return{
-      userName: state.users.userName
+      userName: state.users.userName,
+      users: state.users.users
   }
 };
 export default connect(mapStateToProps)(FavoritesScreen);

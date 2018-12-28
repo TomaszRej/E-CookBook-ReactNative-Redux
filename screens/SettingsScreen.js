@@ -9,7 +9,7 @@ class SettingsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeLabel: 'SignIn'
+            activeLabel: 'SignIn',
         }
     }
 
@@ -19,16 +19,10 @@ class SettingsScreen extends React.Component {
         })
     };
 
-    handleSubmit = () => {
-        const name = 'na sztywno TOMEK';
-        this.props.setCurrentUserName(name);
-    };
-
-
     render() {
         let form;
         if (this.state.activeLabel === 'SignIn') {
-            form = <SignIn/>
+            form = <SignIn setCurrentUserName={this.props.set}/>
         } else if (this.state.activeLabel === 'SignUp') {
             form = <SignUp/>
         }
@@ -57,21 +51,14 @@ class SettingsScreen extends React.Component {
                     <View style={styles.form}>
                         {form}
                     </View>
-                    <View style={styles.submitArea}>
-                        <DefaultButton
-                            style={styles.submitButton}
-                            onPress={this.handleSubmit}
-                            disabled={false}
-                        >
-                            Submit
-                        </DefaultButton>
-                    </View>
 
                 </View>
             </View>
         )
     }
 }
+
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -104,15 +91,6 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 24,
         padding: 3
-    },
-    submitArea: {
-        alignSelf: 'center',
-
-        //alignItems: 'center',
-        width: '90%'
-    },
-    submitButton: {
-        fontSize: 30
     }
 
 

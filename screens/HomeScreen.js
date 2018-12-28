@@ -21,6 +21,8 @@ class HomeScreen extends React.Component {
         });
     };
     handleHeartClick = (id) => {
+        //sprawdzic czy juz lubi
+
         this.props.updateLikes(id);
     };
 
@@ -102,6 +104,7 @@ class HomeScreen extends React.Component {
 const mapStateToProps = state => {
     return {
         userName: state.users.userName,
+        users: state.users.users,
         recipes: state.recipes.recipes
     }
 };
