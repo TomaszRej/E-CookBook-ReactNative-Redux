@@ -28,15 +28,21 @@ class SettingsScreen extends React.Component {
             <View>
                 <View style={styles.container}>
                     <View style={styles.buttons}>
-                        <Button title='Sign in' onPress={() => this.handleChoice('SignIn')} style={styles.button}/>
-                        <Button title='Sign up' onPress={() => this.handleChoice('SignUp')} style={styles.button}/>
+                        <View style={styles.button}>
+                            <Button title='Sign in' onPress={() => this.handleChoice('SignIn')}/>
+                        </View>
+                        <View style={[styles.button, {borderColor: 'red'}]}>
+                            <Button title='Sign up' onPress={() => this.handleChoice('SignUp')}/>
+                        </View>
                     </View>
                 </View>
                 <View>
                     <Text>Settings screen</Text>
-                    <Button title='test'
-                            onPress={this.handleSubmit}>
-                    </Button>
+                    <View style={styles.submitButton}>
+                        <Button title='test'
+                                onPress={this.handleSubmit}>
+                        </Button>
+                    </View>
                 </View>
             </View>
         )
@@ -64,8 +70,13 @@ const styles = StyleSheet.create({
 
     },
     button: {
+        borderBottomWidth: 1,
+        borderColor: '#5ac8fa',
 
         //textAlign: 'center'
+    },
+    submitButton: {
+        backgroundColor: 'pink'
     }
 
 });

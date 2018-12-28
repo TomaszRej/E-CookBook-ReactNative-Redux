@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DefaultButton from '../components/UI/DefaultButton';
 
 class DetailsScreen extends React.Component {
     constructor(props) {
@@ -18,29 +19,72 @@ class DetailsScreen extends React.Component {
     handlePressOnBack = () => {
         this.props.navigation.navigate('Home');
     };
+    handlePressOnAddToFav = () => {
+        alert('dodawanie');
+    };
 
     render() {
         const {selectedRecipe} = this.props;
+        let ingredients;
+        if (selectedRecipe.ingredients) {
+            ingredients = selectedRecipe.ingredients.map((ingredient) => {
+                return (
+                    <Text>{ingredient}</Text>
+                )
+            });
+        }
+        let instructions;
+        if (selectedRecipe.instructions) {
+            instructions = selectedRecipe.instructions.map((instruction) => {
+                return (
+                    <Text>{instruction}</Text>
+                )
+            });
+        }
+
         return (
-            <View>
-                <View style={styles.goBackButton}>
-                    <Icon name='ios-arrow-back' size={20} style={styles.goBackIcon}/>
-                    <Button title='Back' onPress={this.handlePressOnBack}/>
-                </View>
+            <ScrollView>
                 <View>
+
+                    <TouchableOpacity onPress={this.handlePressOnBack} style={styles.goBackButton}>
+                        <Icon name='ios-arrow-back' size={20} style={styles.goBackIcon}/>
+                        <Text style={styles.goBackText}>Back</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.recipeDetails}>
                     <Text style={styles.title}>{selectedRecipe.title} </Text>
-                    <View style={{flexDirection: 'row'}}>
+                    <View style={styles.paragraph}>
                         <Text style={{fontWeight: 'bold'}}>Author:{' '}</Text><Text>{selectedRecipe.author}</Text>
                     </View>
-                    <View style={{flexDirection: 'row'}}>
+                    <View style={styles.description}>
                         <Text>
-                        <Text
-                            style={{fontWeight: 'bold'}}>Description:{' '}</Text>{selectedRecipe.description}</Text>
+                            <Text
+                                style={{fontWeight: 'bold'}}>Description:{' '}</Text>{selectedRecipe.description}</Text>
+                    </View>
+                    <View style={styles.list}>
+                        <Text style={{fontWeight: 'bold'}}>Ingredients:</Text>
+                        {ingredients}
+                    </View>
+                    <View style={styles.list}>
+                        <Text style={{fontWeight: 'bold'}}>Instructions:</Text>
+                        {instructions}
+                    </View>
+                    {/*<TouchableOpacity onPress={this.handlePressOnAddToFav}>*/}
+                    {/*<Text style={styles.addToFavoritesBtn}>Add to Favorites</Text>*/}
+                    {/*</TouchableOpacity>*/}
+                    <View style={styles.addToFavorites}>
+                        <DefaultButton
+
+                            onPress={this.handlePressOnAddToFav}
+                            disabled={false}
+                        >
+                            Add To Favorites
+                        </DefaultButton>
                     </View>
 
 
                 </View>
-            </View>
+            </ScrollView>
         )
     }
 }
@@ -64,18 +108,51 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    recipeDetails: {
+        paddingTop: 10,
+
+
+    },
     goBackButton: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        marginLeft: 10
+        marginLeft: 10,
+        paddingTop: 5,
+
     },
     goBackIcon: {
-        paddingTop: 3,
-        color: 'blue'
+        paddingTop: 2,
+        paddingHorizontal: 5,
+        color: 'blue',
+        fontSize: 30
+    },
+    goBackText: {
+        color: 'blue',
+        fontSize: 24
     },
     title: {
         fontSize: 30,
         textAlign: 'center'
+    },
+    paragraph: {
+        paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    description: {
+        width: '80%',
+        alignSelf: 'center',
+
+    },
+    list: {
+        width: '80%',
+        alignSelf: 'center',
+        paddingTop: 15
+    },
+    addToFavorites: {
+        width: '80%',
+        alignSelf: 'center',
+        padding:15
     }
 });
