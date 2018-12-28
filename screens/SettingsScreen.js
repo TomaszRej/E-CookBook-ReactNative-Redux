@@ -1,6 +1,9 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
+import DefaultButton from "../components/UI/DefaultButton";
+import SignIn from '../components/SignIn';
+import SignUp from '../components/SignUp';
 
 class SettingsScreen extends React.Component {
     constructor(props) {
@@ -9,7 +12,6 @@ class SettingsScreen extends React.Component {
             activeLabel: 'SignIn'
         }
     }
-
 
     handleChoice = (label) => {
         this.setState({
@@ -24,25 +26,47 @@ class SettingsScreen extends React.Component {
 
 
     render() {
+        let form;
+        if (this.state.activeLabel === 'SignIn') {
+            form = <SignIn/>
+        } else if (this.state.activeLabel === 'SignUp') {
+            form = <SignUp/>
+        }
+
         return (
-            <View>
-                <View style={styles.container}>
+            <View style={styles.container}>
+                <View>
                     <View style={styles.buttons}>
-                        <View style={styles.button}>
-                            <Button title='Sign in' onPress={() => this.handleChoice('SignIn')}/>
-                        </View>
-                        <View style={[styles.button, {borderColor: 'red'}]}>
-                            <Button title='Sign up' onPress={() => this.handleChoice('SignUp')}/>
-                        </View>
+                        <TouchableOpacity style={[styles.button, {
+                            borderColor: this.state.activeLabel === 'SignIn' ? 'blue' : 'transparent',
+                            borderBottomWidth: 2
+                        }]}
+                                          onPress={() => this.handleChoice('SignIn')}>
+                            <Text style={styles.buttonText}>Sign in</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.button, {
+                            borderColor: this.state.activeLabel === 'SignUp' ? 'blue' : 'transparent',
+                            borderBottomWidth: 2
+                        }]}
+                                          onPress={() => this.handleChoice('SignUp')}>
+                            <Text style={styles.buttonText}>Sign up </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
-                <View>
-                    <Text>Settings screen</Text>
-                    <View style={styles.submitButton}>
-                        <Button title='test'
-                                onPress={this.handleSubmit}>
-                        </Button>
+                <View style={styles.content}>
+                    <View style={styles.form}>
+                        {form}
                     </View>
+                    <View style={styles.submitArea}>
+                        <DefaultButton
+                            style={styles.submitButton}
+                            onPress={this.handleSubmit}
+                            disabled={false}
+                        >
+                            Submit
+                        </DefaultButton>
+                    </View>
+
                 </View>
             </View>
         )
@@ -59,9 +83,15 @@ export default connect(null, mapDispatchToProps)(SettingsScreen);
 
 const styles = StyleSheet.create({
     container: {
-        //flex: 1,
+        paddingVertical: 10,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    content: {
+        width: '70%'
+    },
+    form: {
+        padding: 20
     },
     buttons: {
         width: '50%',
@@ -69,14 +99,21 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
 
     },
-    button: {
-        borderBottomWidth: 1,
-        borderColor: '#5ac8fa',
 
-        //textAlign: 'center'
+    buttonText: {
+        color: 'blue',
+        fontSize: 24,
+        padding: 3
+    },
+    submitArea: {
+        alignSelf: 'center',
+
+        //alignItems: 'center',
+        width: '90%'
     },
     submitButton: {
-        backgroundColor: 'pink'
+        fontSize: 30
     }
+
 
 });

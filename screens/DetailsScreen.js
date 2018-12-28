@@ -27,17 +27,17 @@ class DetailsScreen extends React.Component {
         const {selectedRecipe} = this.props;
         let ingredients;
         if (selectedRecipe.ingredients) {
-            ingredients = selectedRecipe.ingredients.map((ingredient) => {
+            ingredients = selectedRecipe.ingredients.map((ingredient,index) => {
                 return (
-                    <Text>{ingredient}</Text>
+                    <Text key={index}>{ingredient}</Text>
                 )
             });
         }
         let instructions;
         if (selectedRecipe.instructions) {
-            instructions = selectedRecipe.instructions.map((instruction) => {
+            instructions = selectedRecipe.instructions.map((instruction,index) => {
                 return (
-                    <Text>{instruction}</Text>
+                    <Text key={index}>{instruction}</Text>
                 )
             });
         }
