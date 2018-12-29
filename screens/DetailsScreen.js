@@ -20,14 +20,17 @@ class DetailsScreen extends React.Component {
         this.props.navigation.navigate('Home');
     };
     handlePressOnAddToFav = () => {
-        alert('dodawanie');
+        const {selectedRecipe} = this.props;
+        //console.log(selectedRecipe,'do redux zeby dodac');
+        this.props.addToFavorites(selectedRecipe, this.props.userName);
+        console.log(this.props.users,'po dodaniu ');
     };
 
     render() {
         const {selectedRecipe} = this.props;
         let ingredients;
         if (selectedRecipe.ingredients) {
-            ingredients = selectedRecipe.ingredients.map((ingredient,index) => {
+            ingredients = selectedRecipe.ingredients.map((ingredient, index) => {
                 return (
                     <Text key={index}>{ingredient}</Text>
                 )
@@ -35,12 +38,22 @@ class DetailsScreen extends React.Component {
         }
         let instructions;
         if (selectedRecipe.instructions) {
-            instructions = selectedRecipe.instructions.map((instruction,index) => {
+            instructions = selectedRecipe.instructions.map((instruction, index) => {
                 return (
                     <Text key={index}>{instruction}</Text>
                 )
             });
         }
+        let button = null;
+        if (this.props.userName !== '') {
+            button = (<DefaultButton
+                onPress={this.handlePressOnAddToFav}
+                disabled={false}
+            >
+                Add To Favorites
+            </DefaultButton>)
+        }
+
 
         return (
             <ScrollView>
@@ -73,13 +86,7 @@ class DetailsScreen extends React.Component {
                     {/*<Text style={styles.addToFavoritesBtn}>Add to Favorites</Text>*/}
                     {/*</TouchableOpacity>*/}
                     <View style={styles.addToFavorites}>
-                        <DefaultButton
-
-                            onPress={this.handlePressOnAddToFav}
-                            disabled={false}
-                        >
-                            Add To Favorites
-                        </DefaultButton>
+                        {button}
                     </View>
 
 
@@ -91,12 +98,15 @@ class DetailsScreen extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        selectedRecipe: state.recipes.selectedRecipe
+        selectedRecipe: state.recipes.selectedRecipe,
+        userName: state.users.userName,
+        users: state.users.users
     }
 };
 const mapDispatchToProps = dispatch => {
     return {
-        showRecipeDetails: id => dispatch({type: 'SHOW_RECIPE_DETAILS', id})
+        showRecipeDetails: id => dispatch({type: 'SHOW_RECIPE_DETAILS', id}),
+        addToFavorites: (recipe, name) => dispatch({type: 'ADD_TO_FAVORITES', recipe, name})
     }
 };
 
@@ -153,6 +163,6 @@ const styles = StyleSheet.create({
     addToFavorites: {
         width: '80%',
         alignSelf: 'center',
-        padding:15
+        padding: 15
     }
 });

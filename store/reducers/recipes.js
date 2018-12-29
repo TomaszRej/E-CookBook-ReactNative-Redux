@@ -28,6 +28,8 @@ const reducer = (state=initialState, action) => {
             console.log(state.recipes,'state REDUX');
 
             return{
+                ...state,
+
                 recipes: state.recipes.map((item) => {
                         if(item.id === action.id){
                             return {

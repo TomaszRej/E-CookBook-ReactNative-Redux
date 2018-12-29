@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, ScrollView, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultInput from '../components/UI/DefaultInput';
+import DefaultButton from '../components/UI/DefaultButton';
 import {connect} from 'react-redux';
 import {createStackNavigator} from "react-navigation";
 import DetailsScreen from "./DetailsScreen";

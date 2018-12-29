@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Switch} from 'react-native';
 import { connect } from 'react-redux';
 import DefaultButton from '../components/UI/DefaultButton';
 import DefaultInput from '../components/UI/DefaultInput';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 class AddScreen extends React.Component {
     constructor(props) {
@@ -43,6 +44,11 @@ class AddScreen extends React.Component {
       this.props.addRecipe(recipe);
     };
     render() {
+        const radio_props = [
+            {label: 'Soft', value: 1 },
+            {label: 'Medium', value: 2 },
+            {label: 'High', value: 3}
+        ];
         return (
             <View style={styles.container}>
                 <DefaultInput
@@ -67,6 +73,29 @@ class AddScreen extends React.Component {
                     value={this.state.timeToPrepare}
                     onChangeText={(text) => this.handleTextChange(text, 'timeToPrepare')}
                 />
+                <View>
+                    <RadioForm
+                        radio_props={radio_props}
+                        initial={0}
+                       // onPress={(value) => {this.setState({value:value})}}
+                        onPress={(value) => this.handleTextChange(value,'hotLvl')}
+                        buttonSize={10}
+                        buttonOuterSize={25}
+                        formHorizontal={true}
+                        labelHorizontal={false}
+                        // buttonColor='#eee'
+
+
+                    />
+                </View>
+                <View>
+                    <Text>suitable for vegetarians</Text>
+                <Switch
+                value={this.state.isVegetarian}
+                onValueChange={(value) =>this.handleTextChange(value,'isVegetarian')}
+                />
+                </View>
+
                 <DefaultButton onPress={this.handleSubmit}>Add Your Recipe</DefaultButton>
             </View>
         )
