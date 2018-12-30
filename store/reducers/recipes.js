@@ -16,7 +16,7 @@ const reducer = (state=initialState, action) => {
             });
             return{
                 ...state,
-                selectedRecipe: state.recipes.find((el)=>el.id === action.id)
+                selectedRecipe: state.recipes.find((el)=> el.id === action.id)
 
             };
         case 'ADD_RECIPE':
@@ -24,6 +24,12 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 recipes: state.recipes.concat(action.recipe)
             };
+        case 'DELETE_RECIPE':
+            return{
+                ...state,
+                recipes: state.recipes.filter((el) => el.id !== action.id)
+            };
+
         case 'UPDATE_LIKES':
             console.log(state.recipes,'state REDUX');
 

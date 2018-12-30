@@ -26,11 +26,22 @@ class HomeScreen extends React.Component {
 
         this.props.updateLikes(id);
     };
+    handleDeletePress = (id) => {
+        this.props.deleteRecipe(id);
+    };
 
-    render() {
-        console.log(this.props.recipes, 'thispropsrecipes');
+
+    renderRecipes = () => {
         const filteredRecipes = this.props.recipes.filter((el) => el.title.includes(this.state.searchText));
         const recipes = filteredRecipes.map((recipe, index) => {
+            let deleteButton = <Text>{}</Text>;
+            if(this.props.userName === recipe.author){
+                deleteButton=<DefaultButton
+                    error={true}
+                onPress={(id) =>this.handleDeletePress(recipe.id)}
+                >Delete</DefaultButton>;
+            }
+
             return (
                 <View
                     style={styles.recipe}
@@ -73,10 +84,19 @@ class HomeScreen extends React.Component {
 
                             <Text style={styles.textInIconGroup}>{recipe.likes}</Text>
                         </View>
+                        <View>
+                            {deleteButton}
+                        </View>
                     </View>
                 </View>
             )
+
         });
+
+        return recipes;
+    };
+
+    render() {
         return (
             <View style={styles.container}>
                 <View style={styles.searchInput}>
@@ -95,7 +115,7 @@ class HomeScreen extends React.Component {
                     </View>
                 </View>
                 <ScrollView style={styles.recipes}>
-                    {recipes}
+                    {this.renderRecipes()}
                 </ScrollView>
             </View>
         )
@@ -111,13 +131,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return{
-        updateLikes: (id) => dispatch({type: 'UPDATE_LIKES',id})
+    return {
+        updateLikes: (id) => dispatch({type: 'UPDATE_LIKES', id}),
+        deleteRecipe: (id) => dispatch({type: 'DELETE_RECIPE', id})
     }
 };
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
 
 const styles = StyleSheet.create({
     container: {
@@ -184,6 +205,11 @@ const styles = StyleSheet.create({
     flames: {
         flexDirection: 'row',
         paddingHorizontal: 10,
+    },
+    deleteButton: {
+        borderColor: 'red',
+        borderWidth: 4,
+        color:'red'
     }
 
 });
