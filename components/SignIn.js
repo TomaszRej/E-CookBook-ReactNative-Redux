@@ -53,8 +53,8 @@ class SignIn extends React.Component {
                 console.log(this.checkIfPasswordIsCorrect(user, password));
                 if (this.checkIfPasswordIsCorrect(user, password)) {
 
-                    // do reduxa
-                    this.props.setCurrentUserName(this.state.controls.userLogin);
+                    // do reduxa ???
+                    //this.props.setCurrentUserName(this.state.controls.userLogin);
                     this.props.setValidUserData(true);
                 }
             }
@@ -63,6 +63,7 @@ class SignIn extends React.Component {
     };
     handleSubmit = () => {
         this.props.setCurrentUserName(this.state.controls.userLogin);
+        this.props.handleLogin();
     };
     render() {
         return (

@@ -12,11 +12,9 @@ import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom
 import HomeScreen from "../screens/HomeScreen";
 import AddScreen from "../screens/AddScreen";
 import FavoritesScreen from '../screens/FavoritesScreen';
-
 import SettingsScreen from '../screens/SettingsScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DetailsScreen from "../screens/DetailsScreen";
-import { connect } from 'react-redux';
 
 const RecipesNavigator = createStackNavigator({
     Home: {

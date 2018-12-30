@@ -21,7 +21,15 @@ class DetailsScreen extends React.Component {
     };
     handlePressOnAddToFav = () => {
         const {selectedRecipe} = this.props;
-        //console.log(selectedRecipe,'do redux zeby dodac');
+      // check if the recipe is not already in favorites of user
+        // and only if not  add recipe to favorites and set state
+      //   let usersFavoriteRecipes= [];
+      //   for(const el in this.props.users){
+      //       if(this.props.userName === this.props.users[el].name){
+      //           usersFavoriteRecipes = this.props.users[el].favorites;
+      //       }
+      //   }
+
         this.props.addToFavorites(selectedRecipe, this.props.userName);
         console.log(this.props.users,'po dodaniu ');
     };

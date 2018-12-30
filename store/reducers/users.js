@@ -1,7 +1,7 @@
 import db from '../../db/db.json';
 
 const initialState = {
-    userName: 'Tomek',
+    userName: '',
     users: db.users,
     validUserData: false
     // selectedPlace: null

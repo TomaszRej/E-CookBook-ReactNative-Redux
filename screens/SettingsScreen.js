@@ -9,6 +9,7 @@ class SettingsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            logged: false,
             activeLabel: 'SignIn',
         }
     }
@@ -19,42 +20,67 @@ class SettingsScreen extends React.Component {
         })
     };
 
+    handleLogin = () => {
+      this.setState({
+          logged: !this.state.logged
+      })
+    };
+    handleLogout = () =>{
+        this.props.setCurrentUserName('');
+        this.setState({
+         logged: !this.state.logged
+        })
+    };
+
     render() {
         let form;
         if (this.state.activeLabel === 'SignIn') {
-            form = <SignIn setCurrentUserName={this.props.set}/>
+            form = <SignIn handleLogin={this.handleLogin}/>
         } else if (this.state.activeLabel === 'SignUp') {
             form = <SignUp/>
         }
 
-        return (
-            <View style={styles.container}>
-                <View>
-                    <View style={styles.buttons}>
-                        <TouchableOpacity style={[styles.button, {
-                            borderColor: this.state.activeLabel === 'SignIn' ? 'blue' : 'transparent',
-                            borderBottomWidth: 2
-                        }]}
-                                          onPress={() => this.handleChoice('SignIn')}>
-                            <Text style={styles.buttonText}>Sign in</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button, {
-                            borderColor: this.state.activeLabel === 'SignUp' ? 'blue' : 'transparent',
-                            borderBottomWidth: 2
-                        }]}
-                                          onPress={() => this.handleChoice('SignUp')}>
-                            <Text style={styles.buttonText}>Sign up </Text>
-                        </TouchableOpacity>
-                    </View>
+        if(this.state.logged){
+            return(
+                <View style={[styles.container,{flex:1}]}>
+                    <DefaultButton
+                    onPress={this.handleLogout}
+                    >Logout</DefaultButton>
                 </View>
-                <View style={styles.content}>
-                    <View style={styles.form}>
-                        {form}
+            )
+        }else {
+            return (
+                <View style={styles.container}>
+                    <View>
+                        <View style={styles.buttons}>
+                            <TouchableOpacity style={[styles.button, {
+                                borderColor: this.state.activeLabel === 'SignIn' ? 'blue' : 'transparent',
+                                borderBottomWidth: 2
+                            }]}
+                                              onPress={() => this.handleChoice('SignIn')}>
+                                <Text style={styles.buttonText}>Sign in</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={[styles.button, {
+                                borderColor: this.state.activeLabel === 'SignUp' ? 'blue' : 'transparent',
+                                borderBottomWidth: 2
+                            }]}
+                                              onPress={() => this.handleChoice('SignUp')}>
+                                <Text style={styles.buttonText}>Sign up </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
+                    <View style={styles.content}>
+                        <View style={styles.form}>
+                            {form}
+                        </View>
 
+                    </View>
                 </View>
-            </View>
-        )
+            )
+        }
+
+
+
     }
 }
 
@@ -91,7 +117,8 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 24,
         padding: 3
-    }
+    },
+
 
 
 });

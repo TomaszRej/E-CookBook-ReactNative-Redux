@@ -22,8 +22,7 @@ class HomeScreen extends React.Component {
         });
     };
     handleHeartClick = (id) => {
-        //sprawdzic czy juz lubi
-
+        //check if user already like the recipe
         this.props.updateLikes(id);
     };
     handleDeletePress = (id) => {
