@@ -60,6 +60,7 @@ const AppTabNavigator = createMaterialBottomTabNavigator({
         }
 
     }
+
 }, {
     navigationOptions: ({navigation}) => {
         const {routeName} = navigation.state.routes[navigation.state.index];

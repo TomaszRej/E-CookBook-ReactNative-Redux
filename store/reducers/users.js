@@ -1,7 +1,7 @@
 import db from '../../db/db.json';
 
 const initialState = {
-    userName: '',
+    userName: 'Tomek',
     users: db.users,
     validUserData: false
     // selectedPlace: null
@@ -27,15 +27,30 @@ const reducer = (state = initialState, action) => {
                         if (action.name === user.name) {
                             return {
                                 ...user,
-
                                 favorites: user.favorites.concat(action.recipe)
                             }
                         }
                         return user;
 
                     })
+                };
+            case 'DELETE_FROM_FAVORITES':
+                console.log('test del');
+                return{
+                    ...state,
+                    users: state.users.map((user) => {
+                        if (action.name === user.name) {
+                            return {
+                                ...user,
+                                favorites: user.favorites.find((el,index) =>{
+                                        return el.id === 0
 
+                                })
+                            }
+                        }
+                        return user;
 
+                    })
                 };
             default:
                 return state;
