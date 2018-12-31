@@ -16,7 +16,7 @@ class FavoritesScreen extends React.Component {
     }
 
     deleteFromFavorite = (id) => {
-        this.props.deleteFromFavorites(id);
+        this.props.deleteFromFavorites(id,this.props.userName);
     };
 
     render() {
@@ -112,7 +112,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return{
-      deleteFromFavorites: (id) => dispatch({type: 'DELETE_FROM_FAVORITES' ,id})
+      deleteFromFavorites: (id,name) => dispatch({type: 'DELETE_FROM_FAVORITES' ,id,name})
   }
 };
 

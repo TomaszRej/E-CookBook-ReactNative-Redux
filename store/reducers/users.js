@@ -35,21 +35,19 @@ const reducer = (state = initialState, action) => {
                     })
                 };
             case 'DELETE_FROM_FAVORITES':
-                console.log('test del');
                 return{
                     ...state,
                     users: state.users.map((user) => {
                         if (action.name === user.name) {
                             return {
                                 ...user,
-                                favorites: user.favorites.find((el,index) =>{
-                                        return el.id === 0
-
-                                })
+                                favorites: [
+                                    ...user.favorites.slice(0,action.id),
+                                    ...user.favorites.slice(action.id+1)
+                                    ]
                             }
                         }
                         return user;
-
                     })
                 };
             default:
