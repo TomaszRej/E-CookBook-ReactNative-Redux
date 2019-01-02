@@ -23,10 +23,24 @@ only when enter correct password and login the confirm button is enabled
 user can add recipe to his favorites after doing that the button is disabled
 ![Alt text](./assets/RecipeDetailView.png?raw=true "RecipeDetail View")
 
+#### When clicked on heart in tab menu when user is not logged or don't have any favorite recipe appropriate message is display
+
+![Alt text](./assets/FavoriteView1.png?raw=true "Favorite View 1")
+
+#### Favorites list - when user click on trash icon the recipe is deleted from favorites list and when user click on image details aboute recipe are shown
+
+![Alt text](./assets/FavoriteView2.png?raw=true "Favorite View 2")
+
 #### When clicked on add button in tab menu user is able to add his own recipe
 if user is not logged he is taken to loggin screen
 
 ![Alt text](./assets/AddingView.png?raw=true "Adding View")
+
+#### Settings View when logged and drawer menu 
+
+![Alt text](./assets/SettingsView.png?raw=true "Settings View") 
+
+
 
 
 
