@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8d78bf4-21f3-428f-b5e5-e09121a47fd3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/MainView1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/MainView2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,10 +57,12 @@
           <entry key="js" value="45" />
           <entry key="json" value="1" />
           <entry key="md" value="1" />
+          <entry key="png" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Image" value="1" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="45" />
           <entry key="Markdown" value="1" />
@@ -70,13 +71,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="8735" />
-          <entry key="md" value="261" />
+          <entry key="md" value="628" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JavaScript" value="8735" />
-          <entry key="Markdown" value="261" />
+          <entry key="Markdown" value="628" />
         </counts>
       </usages-collector>
     </session>
@@ -87,12 +88,17 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="119">
-                <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <first_editor relative-caret-position="289">
+                <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/RecipeDetailView.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -124,15 +130,6 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/store/actions/users.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
-              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -248,8 +245,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="71" />
-    <option name="y" value="100" />
+    <option name="x" value="65" />
+    <option name="y" value="23" />
     <option name="width" value="1550" />
     <option name="height" value="977" />
   </component>
@@ -315,15 +312,15 @@
       <updated>1546163502097</updated>
       <workItem from="1546163503276" duration="209000" />
       <workItem from="1546164217164" duration="1783000" />
-      <workItem from="1546168432866" duration="32269000" />
+      <workItem from="1546168432866" duration="32982000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34261000" />
+    <option name="totallyTimeSpent" value="34974000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="71" y="100" width="1550" height="977" extended-state="0" />
+    <frame x="65" y="23" width="1550" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13865271" />
@@ -480,18 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="135" column="39" selection-start-line="135" selection-start-column="39" selection-end-line="135" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#HomeScreen#0" />
-            <element signature="e#5138#6444#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/screens/SettingsScreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2612">
@@ -533,11 +518,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/RecipeDetailView.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="135" column="39" selection-start-line="135" selection-start-column="39" selection-end-line="135" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#HomeScreen#0" />
+            <element signature="e#5138#6444#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <first_editor relative-caret-position="289">
+            <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           </first_editor>
           <second_editor />
         </state>
