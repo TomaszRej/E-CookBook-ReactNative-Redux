@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView, Image} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView, Image,SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
+import DefaultButton from '../components/UI/DefaultButton';
 
 class FavoritesScreen extends React.Component {
     constructor(props) {
@@ -45,25 +46,57 @@ class FavoritesScreen extends React.Component {
 
 
         const favorites = usersFavoriteRecipes.map((el, index) => {
+            const instructions = el.instructions.map(el => <Text>{el}</Text>);
+            const ingredients = el.ingredients.map(el => <Text>{el}</Text>);
+
             return (
-                <View key={index}>
+                <SafeAreaView key={index} >
                     <Modal
                         animationType="slide"
                         transparent={false}
                         visible={this.state.modalVisible}
+
                         onRequestClose={() => {
                             Alert.alert('Modal has been closed.');
                         }}>
-                        <View style={{marginTop: 22}}>
+                        <View style={styles.modalContent}>
                             <View>
-                                <Text>{el.title}</Text>
+                                <View style={styles.recipeDetails}>
+                                    <Text style={styles.title}>{el.title} </Text>
+                                    <View style={styles.paragraph}>
+                                        <Text style={{fontWeight: 'bold'}}>Author:{' '}</Text><Text>{el.author}</Text>
+                                    </View>
+                                    <View style={styles.description}>
+                                        <Text>
+                                            <Text
+                                                style={{fontWeight: 'bold'}}>Description:{' '}</Text>{el.description}</Text>
+                                    </View>
+                                    <View style={styles.list}>
+                                        <Text style={{fontWeight: 'bold'}}>Ingredients:</Text>
+                                        {ingredients}
+                                    </View>
+                                    <View style={styles.list}>
+                                        <Text style={{fontWeight: 'bold'}}>Instructions:</Text>
+                                        {instructions}
+                                    </View>
 
-                                <TouchableOpacity
-                                    onPress={() => {
-                                        this.setModalVisible(!this.state.modalVisible);
-                                    }}>
-                                    <Text>Hide Modal</Text>
-                                </TouchableOpacity>
+
+                                </View>
+
+
+
+
+
+                                {/*<TouchableOpacity*/}
+                                    {/*onPress={() => {*/}
+                                        {/*this.setModalVisible(!this.state.modalVisible);*/}
+                                    {/*}}>*/}
+                                    {/*<Text>Hide Modal</Text>*/}
+                                {/*</TouchableOpacity>*/}
+                                <DefaultButton onPress={() => this.setModalVisible(!this.state.modalVisible)}
+                                               style={styles.closeButton}
+                                >Close</DefaultButton>
+
                             </View>
                         </View>
                     </Modal>
@@ -89,7 +122,7 @@ class FavoritesScreen extends React.Component {
                         </View>
 
                     </TouchableOpacity>
-                </View>)
+                </SafeAreaView>)
 
         });
 
@@ -124,6 +157,14 @@ const styles = StyleSheet.create({
         //alignItems: 'flex-start',
         //paddingTop: 100
     },
+    modalContent: {
+      marginTop: 50
+    },
+    closeButton: {
+    marginHorizontal: '10%',
+      marginTop: 20,
+
+    },
     header: {
         width: '70%',
         fontSize: 30,
@@ -155,5 +196,24 @@ const styles = StyleSheet.create({
     trash: {
         padding: 10,
         color: 'red',
-    }
+    },
+    title: {
+        fontSize: 30,
+        textAlign: 'center'
+    },
+    paragraph: {
+        paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    description: {
+        width: '80%',
+        alignSelf: 'center',
+
+    },
+    list: {
+        width: '80%',
+        alignSelf: 'center',
+        paddingTop: 15
+    },
 });

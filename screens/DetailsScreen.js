@@ -22,7 +22,7 @@ class DetailsScreen extends React.Component {
     handlePressOnAddToFav = () => {
         const {selectedRecipe} = this.props;
       // check if the recipe is not already in favorites of user
-        // and only if not  add recipe to favorites and set state
+        // and only if not  add recipe to favorites and hide the button
       //   let usersFavoriteRecipes= [];
       //   for(const el in this.props.users){
       //       if(this.props.userName === this.props.users[el].name){

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Switch} from 'react-native';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import DefaultButton from '../components/UI/DefaultButton';
 import DefaultInput from '../components/UI/DefaultInput';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
@@ -21,35 +21,38 @@ class AddScreen extends React.Component {
 
     handleTextChange = (text, key) => {
         console.log(text);
-      this.setState({
-          [key]: text
-      })
+        this.setState({
+            [key]: text
+        })
     };
 
 
     handleSubmit = () => {
-      const recipe = {
+        const recipe = {
             "author": this.props.userName,
             "title": this.state.title,
-            "description":this.state.description,
+            "description": this.state.description,
             "timeToPrepare": this.state.timeToPrepare,
             "hotLvl": this.state.hotLvl,
             "isVegetarian": this.state.isVegetarian,
-            "link":"https://via.placeholder.com/150",
+            "link": "https://via.placeholder.com/150",
             "likes": 0,
             "whoLikes": [],
             "ingredients": this.state.ingredients,
             "instructions": this.state.instructions
-      };
-      this.props.addRecipe(recipe);
+        };
+        this.props.addRecipe(recipe);
+        console.log(this.props.recipes);
     };
+
     render() {
         const radio_props = [
-            {label: 'Soft', value: 1 },
-            {label: 'Medium', value: 2 },
+            {label: 'Soft', value: 1},
+            {label: 'Medium', value: 2},
             {label: 'High', value: 3}
         ];
         return (
+
             <View style={styles.container}>
                 <DefaultInput
                     placeholder='enter name'
@@ -58,18 +61,18 @@ class AddScreen extends React.Component {
                 />
                 <DefaultInput
                     style={styles.textArea}
-                placeholder='enter description'
-                multiline = {true}
-                numberOfLines = {8}
-                value={this.state.description}
-                onChangeText={(text) => this.handleTextChange(text, 'description')}
+                    placeholder='enter description'
+                    multiline={true}
+                    numberOfLines={8}
+                    value={this.state.description}
+                    onChangeText={(text) => this.handleTextChange(text, 'description')}
 
                 />
                 <DefaultInput
 
                     placeholder='enter time to prepare'
-                    multiline = {true}
-                    numberOfLines = {8}
+                    multiline={true}
+                    numberOfLines={8}
                     value={this.state.timeToPrepare}
                     onChangeText={(text) => this.handleTextChange(text, 'timeToPrepare')}
                 />
@@ -77,9 +80,12 @@ class AddScreen extends React.Component {
                     <RadioForm
                         radio_props={radio_props}
                         initial={0}
-                       // onPress={(value) => {this.setState({value:value})}}
-                        onPress={(value) => this.handleTextChange(value,'hotLvl')}
+                        // onPress={(value) => {this.setState({value:value})}}
+                        onPress={(value) => this.handleTextChange(value, 'hotLvl')}
                         buttonSize={10}
+                        buttonColor={'#333'}
+                        buttonInnerColor={'#333'}
+                        buttonOuterColor={'#333'}
                         buttonOuterSize={25}
                         formHorizontal={true}
                         labelHorizontal={false}
@@ -88,37 +94,51 @@ class AddScreen extends React.Component {
 
                     />
                 </View>
-                <View>
+                <View style={styles.vegetarianContainer}>
+
+                    <Switch
+                        style={styles.isVegetarian}
+                        value={this.state.isVegetarian}
+                        onValueChange={(value) => this.handleTextChange(value, 'isVegetarian')}
+                    />
                     <Text>suitable for vegetarians</Text>
-                <Switch
-                value={this.state.isVegetarian}
-                onValueChange={(value) =>this.handleTextChange(value,'isVegetarian')}
-                />
                 </View>
 
                 <DefaultButton onPress={this.handleSubmit}>Add Your Recipe</DefaultButton>
             </View>
+
         )
     }
 }
+
 const mapStateToProps = state => {
-  return{
-      userName: state.users.userName
-  }
+    return {
+        userName: state.users.userName,
+        recipes: state.recipes.recipes
+    }
 };
 const mapDispatchToProps = dispatch => {
-    return{
+    return {
         addRecipe: (recipe) => dispatch({type: 'ADD_RECIPE', recipe})
     }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(AddScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AddScreen);
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        marginHorizontal: 50,
+        marginVertical: 100,
+        justifyContent: 'space-between',
+        alignItems: 'stretch'
+    },
+    vegetarianContainer:{
+      flexDirection: 'row',
+        alignItems: 'center',
+    },
+    isVegetarian: {
+      marginRight: 10
     },
     textArea: {
         height: 100

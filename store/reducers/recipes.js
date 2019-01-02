@@ -7,13 +7,6 @@ const initialState = {
 const reducer = (state=initialState, action) => {
     switch(action.type){
         case 'SHOW_RECIPE_DETAILS':
-            // console.log('recipe details dispatch', action.id);
-            // state.recipes.filter((el) => {
-            //     if (el.id === action.id) {
-            //
-            //     }
-            //     console.log(el.id);
-            // });
             return{
                 ...state,
                 selectedRecipe: state.recipes.find((el)=> el.id === action.id)
@@ -31,8 +24,6 @@ const reducer = (state=initialState, action) => {
             };
 
         case 'UPDATE_LIKES':
-            console.log(state.recipes,'state REDUX');
-
             return{
                 ...state,
 

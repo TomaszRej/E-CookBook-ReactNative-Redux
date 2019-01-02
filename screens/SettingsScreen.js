@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import DefaultButton from "../components/UI/DefaultButton";
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
-
+import {setCurrentUserName} from '../store/actions/users';
+import LoggedView from "../components/LoggedView";
 class SettingsScreen extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,7 @@ class SettingsScreen extends React.Component {
       })
     };
     handleLogout = () =>{
-        this.props.setCurrentUserName('');
+        this.props.setCurrentUser('');
         this.setState({
          logged: !this.state.logged
         })
@@ -42,11 +43,8 @@ class SettingsScreen extends React.Component {
 
         if(this.state.logged){
             return(
-                <View style={[styles.container,{flex:1}]}>
-                    <DefaultButton
-                    onPress={this.handleLogout}
-                    >Logout</DefaultButton>
-                </View>
+                    <LoggedView handleLogout={this.handleLogout}/>
+
             )
         }else {
             return (
@@ -84,20 +82,25 @@ class SettingsScreen extends React.Component {
     }
 }
 
-
-
-const mapDispatchToProps = dispatch => {
-    return {
-        setCurrentUserName: (name) => dispatch({type: 'SET_CURRENT_USER_NAME', name})
+const mapStateToProps = state => {
+    return{
+        userName: state.users.userName
     }
 };
 
-export default connect(null, mapDispatchToProps)(SettingsScreen);
+const mapDispatchToProps = dispatch => {
+    return {
+        setCurrentUser: (name) => dispatch(setCurrentUserName(name))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);
 
 const styles = StyleSheet.create({
     container: {
         paddingVertical: 10,
-        justifyContent: 'center',
+        paddingHorizontal: 50,
+        justifyContent: 'space-between',
         alignItems: 'center'
     },
     content: {

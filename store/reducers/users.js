@@ -4,7 +4,6 @@ const initialState = {
     userName: 'Tomek',
     users: db.users,
     validUserData: false
-    // selectedPlace: null
 };
 
 const reducer = (state = initialState, action) => {

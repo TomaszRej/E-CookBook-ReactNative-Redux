@@ -3,7 +3,7 @@ import {TouchableOpacity, TouchableNativeFeedback, Text, View, StyleSheet, Platf
 
 const defaultButton = props => {
 
-    const content = <View style={[styles.button, props.disabled ? styles.disabled : null, props.error ? styles.error : null]}>
+    const content = <View style={[styles.button,props.style ,props.disabled ? styles.disabled : null, props.error ? styles.error : null]}>
         <Text style={[styles.text, props.disabled ? styles.disabledText : null, props.error ? styles.errorText : null ]}>
             {props.children}
         </Text>

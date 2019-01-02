@@ -16,6 +16,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DetailsScreen from "../screens/DetailsScreen";
 
+
 const RecipesNavigator = createStackNavigator({
     Home: {
         screen: HomeScreen
@@ -69,11 +70,16 @@ const AppTabNavigator = createMaterialBottomTabNavigator({
             return {
                 headerTitle: 'E-CookBook'
             }
+        } else if (routeName === 'Add') {
+            return {
+                headerTitle: 'Add Your Recipe'
+            }
         } else {
             return {
                 headerTitle: routeName
             }
         }
+
 
     },
     initialRouteName: 'Home',
@@ -117,5 +123,6 @@ const SwitchNavigator = createSwitchNavigator({
     App: AppDrawerNavigator
 });
 const AppContainer = createAppContainer(SwitchNavigator);
+
 
 export default AppContainer;

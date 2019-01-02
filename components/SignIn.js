@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import DefaultInput from './UI/DefaultInput';
 import {connect} from 'react-redux';
 import DefaultButton from "./UI/DefaultButton";
-
+import {setCurrentUserName} from '../store/actions/users';
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
@@ -21,11 +21,6 @@ class SignIn extends React.Component {
             return user.name === userName
         });
 
-        // if(exist){
-        //     return true
-        // }
-        //
-        // return false
         return exist ? exist : false
 
     };
@@ -62,7 +57,7 @@ class SignIn extends React.Component {
 
     };
     handleSubmit = () => {
-        this.props.setCurrentUserName(this.state.controls.userLogin);
+        this.props.setCurrentUser(this.state.controls.userLogin);
         this.props.handleLogin();
     };
     render() {
@@ -103,7 +98,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        setCurrentUserName: (name) => dispatch({type: 'SET_CURRENT_USER_NAME', name}),
+        setCurrentUser: (name) => dispatch(setCurrentUserName(name)),
         setValidUserData: (valid) => dispatch({type: 'SET_VALID_USER_DATA', valid})
     }
 };
