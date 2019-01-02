@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView, Image,SafeA
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux';
 import DefaultButton from '../components/UI/DefaultButton';
+import {deleteFromFavorites} from "../store/actions/users";
 
 class FavoritesScreen extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class FavoritesScreen extends React.Component {
 
         if (!this.props.userName) {
             return (
-                <View style={styles.container}>
+                <View style={styles.containerForInfo}>
                     <Text style={styles.header}>Sign in to see yours favorites!</Text>
                 </View>
             )
@@ -38,7 +39,7 @@ class FavoritesScreen extends React.Component {
 
         if (usersFavoriteRecipes.length === 0) {
             return (
-                <View style={styles.container}>
+                <View style={styles.containerForInfo}>
                     <Text style={styles.header}>You don't have any favorite recipe!</Text>
                 </View>
             )
@@ -50,7 +51,7 @@ class FavoritesScreen extends React.Component {
             const ingredients = el.ingredients.map(el => <Text>{el}</Text>);
 
             return (
-                <SafeAreaView key={index} >
+                <View key={index} >
                     <Modal
                         animationType="slide"
                         transparent={false}
@@ -79,20 +80,7 @@ class FavoritesScreen extends React.Component {
                                         <Text style={{fontWeight: 'bold'}}>Instructions:</Text>
                                         {instructions}
                                     </View>
-
-
                                 </View>
-
-
-
-
-
-                                {/*<TouchableOpacity*/}
-                                    {/*onPress={() => {*/}
-                                        {/*this.setModalVisible(!this.state.modalVisible);*/}
-                                    {/*}}>*/}
-                                    {/*<Text>Hide Modal</Text>*/}
-                                {/*</TouchableOpacity>*/}
                                 <DefaultButton onPress={() => this.setModalVisible(!this.state.modalVisible)}
                                                style={styles.closeButton}
                                 >Close</DefaultButton>
@@ -122,7 +110,7 @@ class FavoritesScreen extends React.Component {
                         </View>
 
                     </TouchableOpacity>
-                </SafeAreaView>)
+                </View>)
 
         });
 
@@ -145,7 +133,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return{
-      deleteFromFavorites: (id,name) => dispatch({type: 'DELETE_FROM_FAVORITES' ,id,name})
+      deleteFromFavorites: (id,name) => dispatch(deleteFromFavorites(id,name))
   }
 };
 
@@ -154,8 +142,10 @@ export default connect(mapStateToProps,mapDispatchToProps)(FavoritesScreen);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        //alignItems: 'flex-start',
-        //paddingTop: 100
+    },
+    containerForInfo: {
+      alignItems: 'center',
+        marginTop: 50
     },
     modalContent: {
       marginTop: 50
@@ -180,7 +170,6 @@ const styles = StyleSheet.create({
         width: '100%',
         borderColor: '#eee',
         borderWidth: 1,
-        // paddingVertical: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'

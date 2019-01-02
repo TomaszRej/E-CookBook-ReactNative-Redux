@@ -4,6 +4,9 @@ import DefaultInput from './UI/DefaultInput';
 import {connect} from 'react-redux';
 import DefaultButton from "./UI/DefaultButton";
 import {setCurrentUserName} from '../store/actions/users';
+import {setValidUserData} from "../store/actions/users";
+
+
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
@@ -29,10 +32,6 @@ class SignIn extends React.Component {
     };
 
     handleChangeText = (text, key) => {
-        console.log(text);
-        console.log('------------');
-
-
         this.setState(prevState => {
             return {
                 controls: {
@@ -44,13 +43,8 @@ class SignIn extends React.Component {
             const user = this.checkIfUserExist(this.state.controls.userLogin);
             const password = this.state.controls.password;
             if (user) {
-                console.log('przed cos');
-                console.log(this.checkIfPasswordIsCorrect(user, password));
                 if (this.checkIfPasswordIsCorrect(user, password)) {
-
-                    // do reduxa ???
-                    //this.props.setCurrentUserName(this.state.controls.userLogin);
-                    this.props.setValidUserData(true);
+                    this.props.setValidUser(true);
                 }
             }
         });
@@ -99,7 +93,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         setCurrentUser: (name) => dispatch(setCurrentUserName(name)),
-        setValidUserData: (valid) => dispatch({type: 'SET_VALID_USER_DATA', valid})
+        setValidUser: (valid) => dispatch(setValidUserData(valid))
     }
 };
 
@@ -110,12 +104,9 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 10,
         marginBottom: 10
-
     },
     submitArea: {
         alignSelf: 'center',
-
-        //alignItems: 'center',
         width: '105%'
     },
     submitButton: {

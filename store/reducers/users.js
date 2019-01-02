@@ -1,7 +1,7 @@
 import db from '../../db/db.json';
 
 const initialState = {
-    userName: 'Tomek',
+    userName: '',
     users: db.users,
     validUserData: false
 };
@@ -19,7 +19,6 @@ const reducer = (state = initialState, action) => {
                     validUserData: action.valid
                 };
             case 'ADD_TO_FAVORITES':
-                console.log(state.userName, 'stateuserName');
                 return {
                     ...state,
                     users: state.users.map((user) => {

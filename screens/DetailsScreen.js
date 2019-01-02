@@ -3,10 +3,15 @@ import {View, Text, StyleSheet, Button, ScrollView, TouchableOpacity} from 'reac
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultButton from '../components/UI/DefaultButton';
+import {addToFavorites} from "../store/actions/users";
+import {showRecipeDetails} from "../store/actions/recipes";
 
 class DetailsScreen extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+          disableButton: false
+        };
         this.loadDetails();
     }
 
@@ -21,17 +26,11 @@ class DetailsScreen extends React.Component {
     };
     handlePressOnAddToFav = () => {
         const {selectedRecipe} = this.props;
-      // check if the recipe is not already in favorites of user
-        // and only if not  add recipe to favorites and hide the button
-      //   let usersFavoriteRecipes= [];
-      //   for(const el in this.props.users){
-      //       if(this.props.userName === this.props.users[el].name){
-      //           usersFavoriteRecipes = this.props.users[el].favorites;
-      //       }
-      //   }
 
         this.props.addToFavorites(selectedRecipe, this.props.userName);
-        console.log(this.props.users,'po dodaniu ');
+        this.setState({
+            disableButton: true
+        })
     };
 
     render() {
@@ -56,7 +55,7 @@ class DetailsScreen extends React.Component {
         if (this.props.userName !== '') {
             button = (<DefaultButton
                 onPress={this.handlePressOnAddToFav}
-                disabled={false}
+                disabled={this.state.disableButton}
             >
                 Add To Favorites
             </DefaultButton>)
@@ -113,8 +112,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        showRecipeDetails: id => dispatch({type: 'SHOW_RECIPE_DETAILS', id}),
-        addToFavorites: (recipe, name) => dispatch({type: 'ADD_TO_FAVORITES', recipe, name})
+        showRecipeDetails: id => dispatch(showRecipeDetails(id)),
+        addToFavorites: (recipe, name) => dispatch(addToFavorites(recipe,name))
     }
 };
 

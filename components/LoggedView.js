@@ -49,7 +49,7 @@ class LoggedView extends React.Component {
                     >Logout</DefaultButton>
                 </View>
 
-                <View>
+                <View style={styles.container}>
                     <Text>You have added {this.state.addedRecipes} recipe</Text>
                 </View>
 

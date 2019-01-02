@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import DefaultButton from "../components/UI/DefaultButton";
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 import {setCurrentUserName} from '../store/actions/users';
 import LoggedView from "../components/LoggedView";
+
 class SettingsScreen extends React.Component {
     constructor(props) {
         super(props);

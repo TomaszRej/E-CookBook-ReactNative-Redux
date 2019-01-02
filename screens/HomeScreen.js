@@ -6,6 +6,7 @@ import DefaultButton from '../components/UI/DefaultButton';
 import {connect} from 'react-redux';
 import {createStackNavigator} from "react-navigation";
 import DetailsScreen from "./DetailsScreen";
+import {deleteRecipe, updateLikes} from "../store/actions/recipes";
 
 
 class HomeScreen extends React.Component {
@@ -131,8 +132,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateLikes: (id) => dispatch({type: 'UPDATE_LIKES', id}),
-        deleteRecipe: (id) => dispatch({type: 'DELETE_RECIPE', id})
+        updateLikes: (id) => dispatch(updateLikes(id)),
+        deleteRecipe: (id) => dispatch(deleteRecipe(id))
     }
 };
 
@@ -146,8 +147,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        // paddingHorizontal: 10,
-        // paddingBottom: 10,
         padding: 10,
         fontSize: 24,
         height: 50
@@ -164,15 +163,12 @@ const styles = StyleSheet.create({
     },
     searchInputIcon: {
         flex: 1,
-        // alignItems: 'center',
-        // justifyContent: 'center'
+
     },
     recipes: {
         width: '100%'
     },
     recipe: {
-        //height: 4000,
-        //height: '100%',
         marginTop: 10,
         width: '100%',
         borderWidth: 1,
