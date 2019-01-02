@@ -77,11 +77,11 @@ class AddScreen extends React.Component {
                     value={this.state.timeToPrepare}
                     onChangeText={(text) => this.handleTextChange(text, 'timeToPrepare')}
                 />
-                <View>
+                <View style={styles.hotLvlContainer}>
                     <RadioForm
                         radio_props={radio_props}
                         initial={0}
-                        style={{ marginVertical: 20}}
+                        style={{ marginVertical: 20, paddingRight: 20}}
                         // onPress={(value) => {this.setState({value:value})}}
                         onPress={(value) => this.handleTextChange(value, 'hotLvl')}
                         buttonSize={10}
@@ -95,6 +95,7 @@ class AddScreen extends React.Component {
 
 
                     />
+                    <Text style={{fontSize: 24}}>Hot Level</Text>
                 </View>
                 <View style={styles.vegetarianContainer}>
 
@@ -103,7 +104,7 @@ class AddScreen extends React.Component {
                         value={this.state.isVegetarian}
                         onValueChange={(value) => this.handleTextChange(value, 'isVegetarian')}
                     />
-                    <Text>suitable for vegetarians</Text>
+                    <Text style={{fontSize: 20}}>suitable for vegetarians</Text>
                 </View>
 
                 <DefaultButton onPress={this.handleSubmit}>Add Your Recipe</DefaultButton>
@@ -139,6 +140,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 20,
+    },
+    hotLvlContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+
+
+
     },
     isVegetarian: {
         marginRight: 10
