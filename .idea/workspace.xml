@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8d78bf4-21f3-428f-b5e5-e09121a47fd3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/MainView1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/MainView2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/AddComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/AddComponent.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -70,13 +70,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="8735" />
-          <entry key="md" value="97" />
+          <entry key="md" value="261" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JavaScript" value="8735" />
-          <entry key="Markdown" value="97" />
+          <entry key="Markdown" value="261" />
         </counts>
       </usages-collector>
     </session>
@@ -87,8 +87,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="429">
-                <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <first_editor relative-caret-position="119">
+                <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               </first_editor>
               <second_editor />
             </state>
@@ -248,8 +248,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="13" />
-    <option name="y" value="23" />
+    <option name="x" value="71" />
+    <option name="y" value="100" />
     <option name="width" value="1550" />
     <option name="height" value="977" />
   </component>
@@ -267,6 +267,11 @@
               <item name="E-CookBook-ReactNative-Redux-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="E-CookBook-ReactNative-Redux-master" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="E-CookBook-ReactNative-Redux-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="E-CookBook-ReactNative-Redux-master" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -282,6 +287,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -309,15 +315,15 @@
       <updated>1546163502097</updated>
       <workItem from="1546163503276" duration="209000" />
       <workItem from="1546164217164" duration="1783000" />
-      <workItem from="1546168432866" duration="31905000" />
+      <workItem from="1546168432866" duration="32269000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33897000" />
+    <option name="totallyTimeSpent" value="34261000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="13" y="23" width="1550" height="977" extended-state="0" />
+    <frame x="71" y="100" width="1550" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13865271" />
@@ -530,8 +536,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="429">
-            <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <first_editor relative-caret-position="119">
+            <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           </first_editor>
           <second_editor />
         </state>
