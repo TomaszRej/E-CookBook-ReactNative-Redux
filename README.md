@@ -38,7 +38,7 @@ if user is not logged he is taken to loggin screen
 
 #### Settings View when logged and drawer menu 
 
-![Alt text](./assets/SettingsView.png?raw=true "Settings View") 
+![Alt text](assets/SettingsView1.png?raw=true "Settings View") 
 
 
 
