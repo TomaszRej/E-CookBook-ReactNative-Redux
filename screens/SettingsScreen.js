@@ -44,7 +44,6 @@ class SettingsScreen extends React.Component {
         if(this.state.logged){
             return(
                     <LoggedView handleLogout={this.handleLogout}/>
-
             )
         }else {
             return (
