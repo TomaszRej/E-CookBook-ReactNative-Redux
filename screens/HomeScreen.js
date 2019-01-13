@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DefaultInput from '../components/UI/DefaultInput';
 import DefaultButton from '../components/UI/DefaultButton';
@@ -7,16 +7,36 @@ import {connect} from 'react-redux';
 import {createStackNavigator} from "react-navigation";
 import DetailsScreen from "./DetailsScreen";
 import {deleteRecipe, updateLikes} from "../store/actions/recipes";
+import * as Animatable from 'react-native-animatable'
 
 
 class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchText: ''
+            searchText: '',
+            searchBarFocused: false
         };
     }
+    componentDidMount() {
+        this.keyboardDidShow = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
+        this.keyboardWillShow = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow)
+        this.keyboardWillHide = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide)
 
+    }
+
+    keyboardDidShow = () => {
+        // check if android OS
+        this.setState({ searchBarFocused: true })
+    };
+
+    keyboardWillShow = () => {
+        this.setState({ searchBarFocused: true })
+    };
+
+    keyboardWillHide = () => {
+        this.setState({ searchBarFocused: false })
+    };
     handlePressOnImage = (id) => {
         this.props.navigation.navigate('Details', {
             id: id
@@ -108,11 +128,11 @@ class HomeScreen extends React.Component {
 
                         style={styles.searchInputText}
                         placeholder='Szukaj'/>
-                    <View style={styles.searchInputIcon}>
+                    <Animatable.View  animation={this.state.searchBarFocused ? "fadeInLeft" : "fadeInRight"} duration={400} style={styles.searchInputIcon}>
                         <Icon
-                            name='ios-search'
+                            name={this.state.searchBarFocused ? 'md-arrow-back':'ios-search'}
                             size={30}/>
-                    </View>
+                    </Animatable.View>
                 </View>
                 <ScrollView style={styles.recipes}>
                     {this.renderRecipes()}
